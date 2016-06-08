@@ -1,38 +1,53 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This role installs Rally.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- Valid repository to install required packages.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Type -> type: "ExistingCloud"
+Region Name -> region
+Authentication URL or IP -> auth_url_or_ip
+Username -> username
+Password -> password
+User Domain (By default is ok in most scenarions) -> user_domain_name
+Name of the Project or Tenant -> project_name
+Name of Project or Tenant Domain Name -> project_domain_name
+Version of Keystone (could be 3 or 2.0, to get this you should check the Keystone endpoint on your cloud with  keystone endpoint-list) -> keystone_version
+If you want to run Tempest test on the cloud (yes or no): run_tempest
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+There is no role dependency for this role.
 
-Example Playbook
-----------------
+Host File
+----------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+The host file for this role is hosts.target and the format is: 
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+[rally]
+IP FOR RALLY  SERVER
+
+To Run
+-------
+
+ansible-playbook -i hosts.target rally.yml
+
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Julio Villarreal Pelegrino <julio@linux.com> more at: http://wwww.juliovillarreal.com

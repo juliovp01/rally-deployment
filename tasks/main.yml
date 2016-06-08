@@ -1,3 +1,4 @@
 ---
 # tasks file for juliovp01.rally-deployment
 - include: install.yml
+- include: run_test.yml
