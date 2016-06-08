@@ -1,0 +1,20 @@
+---
+#Install Tempest Test 
+- name: test | installing rally verify - tempest
+  become: yes
+  shell: rally verify install
+  when: run_tempest  == "yes"
+
+#Run Tempest Test
+- name: test | running rally
+  become: yes
+  shell: rally verify start
+  register: rally_tempest
+  when: run_tempest  == "yes"
+  ignore_errors: yes
+
+- debug: var=rally_tempest verbosity=2
+
+#Functional Tests
+
+

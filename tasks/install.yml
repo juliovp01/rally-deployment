@@ -50,9 +50,43 @@
     dest: /root/osp-keystone-v3.json
     owner: root
     group: root
-    mode: 755
+    mode: 0755
     src: osp-keystone-v3.json.j2
 
 - name: installing | create rally installation
   become: yes
   shell: rally deployment create --file=/root/osp-keystone-v3.json --name=existing
+
+- name: installing | create directory for rally jobs
+  become: yes
+  file: 
+    path: /root/rally-jobs
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: installing | copy rally jobs to destination
+  become: yes
+  file: 
+    src: {{ item }}
+    dest: /root/rally-jobs/{{ item }}
+  with_items: 
+    - cinder.yaml
+    - fuel.yaml
+    - heat.yaml
+    - nova.yaml
+    - rally-designate.yaml
+    - rally-ironic.yaml
+    - rally-keystone-api-v2.yaml
+    - rally-manila-no-ss.yaml
+    - rally-manila.yaml
+    - rally-mistral.yaml
+    - rally-mos.yaml
+    - rally-murano.yaml
+    - rally-neutron.yaml
+    - rally-zaqar.yaml
+    - rally.yaml
+    - rally_args.yaml
+    - sahara-clusters.yaml
+    - unstable-neutron.yaml

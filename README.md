@@ -1,7 +1,8 @@
 Role Name
 =========
 
-This role installs Rally.
+This role installs Rally. 
+The rally jobs deployed are gather from https://github.com/openstack/rally/tree/master/rally-jobs
 
 Requirements
 ------------
