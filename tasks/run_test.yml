@@ -17,4 +17,30 @@
 
 #Functional Tests
 
+- name: test | running rally
+  become: yes
+  shell: rally task start /root/rally-jobs/{{ item }}
+  register: rally_test
+  when: run_test  == "yes"
+  ignore_errors: yes
+  with_items: 
+    - cinder.yaml
+    - fuel.yaml
+    - heat.yaml
+    - nova.yaml
+    - rally-designate.yaml
+    - rally-ironic.yaml
+    - rally-keystone-api-v2.yaml
+    - rally-manila-no-ss.yaml
+    - rally-manila.yaml
+    - rally-mistral.yaml
+    - rally-mos.yaml
+    - rally-murano.yaml
+    - rally-neutron.yaml
+    - rally-zaqar.yaml
+    - rally.yaml
+    - rally_args.yaml
+    - sahara-clusters.yaml
+    - unstable-neutron.yaml
 
+- debug: var=rally_test verbosity=1
