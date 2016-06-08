@@ -1,0 +1,22 @@
+{
+    "type": "{{ type }}",
+    "auth_url": "https://{{auth_url_or_ip}}:5000/v{{keystone_version}}/", "region_name": "{{ region }}",
+    "endpoint_type": "public",
+    "admin": {
+    "username": "{{ username }}",
+    "password": "{{ password }}",
+    "user_domain_name": "{{ user_domain_name }}",
+    "admin_domain_name": "{{ admin_domain_name }}",
+    "project_name": "{{ project_name }}",
+    "project_domain_name": "{{ project_domain_name }}"
+    },
+    "https_insecure": True,
+    "https_cacert": "",
+    "users": [
+    {
+        "username": "{{ usernme }}", 
+        "password": "{{ password }}", 
+        "tenant_name": "{{ project_name }}"
+    }
+    ] 
+}

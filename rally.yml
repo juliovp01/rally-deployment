@@ -1,0 +1,9 @@
+---
+## Role to deploy and configure Rally
+- name: MAIN TASK | Installing and Configuring Rally
+  hosts: rally
+  vars_files:
+    - vars/main.yml
+  remote_user: root
+  tasks:
+    - include: tasks/main.yml

@@ -1,0 +1,3 @@
+---
+# tasks file for juliovp01.rally-deployment
+- include: install.yml

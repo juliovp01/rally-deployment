@@ -1,0 +1,58 @@
+---
+#Installation tasks.
+- name: Begining Installation
+  become: yes
+  debug: msg="Initiating Rally Installation on {{ inventory_hostname }}" 
+
+- name: installing | installing the required software
+  become: yes
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - git 
+    - gcc 
+    - libffi-devel 
+    - python-devel
+    - openssl-devel
+    - gmp-devel
+    - libxml2-devel
+    - libxslt-devel
+    - postgresql-devel 
+    - redhat-rpm-config
+    - wget
+    - epel-release
+
+- name: installing | installing the required software with dependencies
+  become: yes
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - python-pip
+    - vim-enhanced
+
+- name: installing | installing rally
+  become: yes
+  shell: wget https://raw.githubusercontent.com/openstack/rally/master/install_rally.sh -O - | bash
+  register: rally_download
+
+- name: installing | Show output from installing rally task
+  become: yes
+  debug: 
+    var: rally_download
+    verbosity: 2
+  ignore_errors: yes
+
+- name: installing | copy the authentication template
+  become: yes
+  template: 
+    dest: /root/osp-keystone-v3.json
+    owner: root
+    group: root
+    mode: 755
+    src: osp-keystone-v3.json.j2
+
+- name: installing | create rally installation
+  become: yes
+  shell: rally deployment create --file=/root/osp-keystone-v3.json --name=existing

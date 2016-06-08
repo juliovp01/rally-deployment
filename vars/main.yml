@@ -1,0 +1,12 @@
+---
+# vars file for juliovp01.rally-deployment
+type: "ExistingCloud"
+region: "RegionOne"
+auth_url_or_ip: "192.168.1.145"
+username: "admin"
+password: "user_password"
+user_domain_name: "default"
+admin_domain_name: "default"
+project_name: "admin"
+project_domain_name: "default"
+keystone_version: "3"

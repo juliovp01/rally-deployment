@@ -1,0 +1,22 @@
+{
+    "type": "ExistingCloud",
+    "auth_url": "https://ctr1.data.datanet.com:5000/v3/", "region_name": "uswest",
+    "endpoint_type": "public",
+    "admin": {
+    "username": "admin",
+    "password": "admin_passwd",
+    "user_domain_name": "default",
+    "admin_domain_name": "default",
+    "project_name": "admin",
+    "project_domain_name": "default"
+    },
+    "https_insecure": True,
+    "https_cacert": "",
+    "users": [
+    {
+        "username": "admin", 
+        "password": "admin_passwd", 
+        "tenant_name": "admin"
+    }
+    ] 
+}
