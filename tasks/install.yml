@@ -69,7 +69,7 @@
 - name: installing | copy rally jobs to destination
   become: yes
   file: 
-    src: {{ item }}
+    src: "{{ item }}"
     dest: /root/rally-jobs/{{ item }}
   with_items: 
     - cinder.yaml

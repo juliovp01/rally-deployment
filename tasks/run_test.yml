@@ -19,7 +19,7 @@
 
 - name: test | running rally
   become: yes
-  shell: rally task start /root/rally-jobs/{{ item }}
+  shell: rally task start /root/rally-jobs/"{{ item }}"
   register: rally_test
   when: run_test  == "yes"
   ignore_errors: yes
