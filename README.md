@@ -20,8 +20,11 @@ User Domain (By default is ok in most scenarions) -> user_domain_name
 Name of the Project or Tenant -> project_name
 Name of Project or Tenant Domain Name -> project_domain_name
 Version of Keystone (could be 3 or 2.0, to get this you should check the Keystone endpoint on your cloud with  keystone endpoint-list) -> keystone_version
-If you want to run Tempest test on the cloud (yes or no): run_tempest
+If you want to run Tempest test on the cloud (yes or no): run_tempest 
 
+DISCLAIMER
+-----------
+The run of this playbook will take a long amount of time if you select to run the tests.
 
 Dependencies
 ------------
