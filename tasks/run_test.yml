@@ -13,7 +13,7 @@
   when: run_tempest  == "yes"
   ignore_errors: yes
 
-- debug: var=rally_tempest verbosity=2
+- debug: var=rally_tempest
 
 #Functional Tests
 
@@ -43,4 +43,4 @@
     - sahara-clusters.yaml
     - unstable-neutron.yaml
 
-- debug: var=rally_test verbosity=1
+- debug: var=rally_test
