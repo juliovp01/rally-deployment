@@ -21,23 +21,24 @@
     - postgresql-devel 
     - redhat-rpm-config
     - wget
-    - epel-release
 
-- name: installing | installing the required software with dependencies
+- name: installing | installing EPEL repo 
+  shell: wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; rpm -ivh epel-release-latest*
+
+- name: installing | installing software from EPEL
   become: yes
   yum:
     name: "{{ item }}"
     state: latest
   with_items:
     - python-pip
-    - vim-enhanced
 
 - name: installing | installing rally
   become: yes
   shell: wget https://raw.githubusercontent.com/openstack/rally/master/install_rally.sh -O - | bash
   register: rally_download
 
-- name: installing | Show output from installing rally task
+- name: installing | show output from installing rally task
   become: yes
   debug: 
     var: rally_download
