@@ -23,7 +23,8 @@
     - wget
 
 - name: installing | installing EPEL repo 
-  shell: wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; rpm -ivh epel-release-latest*
+  shell: rm -rf epel-release-latest-*; wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; rpm -ivh epel-release-latest*
+  ignore_errors: yes
 
 - name: installing | installing software from EPEL
   become: yes
@@ -42,7 +43,6 @@
   become: yes
   debug: 
     var: rally_download
-    verbosity: 2
   ignore_errors: yes
 
 - name: installing | copy the authentication template
@@ -69,9 +69,9 @@
 
 - name: installing | copy rally jobs to destination
   become: yes
-  file: 
+  copy: 
     src: "{{ item }}"
-    dest: /root/rally-jobs/{{ item }}
+    dest: /root/rally-jobs/
   with_items: 
     - cinder.yaml
     - fuel.yaml
